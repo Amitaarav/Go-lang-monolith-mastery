@@ -57,10 +57,15 @@ Build the logic first and then figure out how to store that data
     - id
     - listing_id
     - object_key
-    
+
 4. Category
     - id
     - name
+
+
+`go run main.go` - 
+
+`go build -o bin/main main.go`
 
 
 
