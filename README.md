@@ -28,6 +28,9 @@ Browser  -----(req)---->  Api ( golang ) --------> database
 
 
 ## Software Design Approaches
-- Data First
+- Data First (Find the things (entities)) make a table for each ---> `Data Driven Design` Simple apps (CRUD), Inventories, blogs --> Mostly showing list and editing lists - Data-first
 - Behavior First
+(Find what app does - place order, cancel booking, invoice)
+Build the logic first and then figure out how to store that data
+`Domain Driven Design` --> Full of rules, complex logic - Behavior first
 
