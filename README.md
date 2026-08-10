@@ -1,4 +1,3 @@
-````markdown
 # Marketplace API
 
 A production-oriented backend for a marketplace application built with Go. The project demonstrates industry-standard backend architecture, secure authentication, CRUD operations, asynchronous image processing, and scalable system design.
@@ -239,25 +238,31 @@ In these systems, business logic is modeled before persistence.
 
 # Getting Started
 
-Run the application locally:
+Run the API server locally (from project root):
 
 ```bash
-go run main.go
+go run ./cmd/api
+```
+
+Run the websocket server locally (if used):
+
+```bash
+go run ./cmd/ws
 ```
 
 ---
 
 # Build
 
-Compile the application:
+Build the API server binary:
 
 ```bash
-go build -o bin/main main.go
+go build -o bin/api ./cmd/api
 ```
 
-The compiled binary will be available at:
+Build the websocket server binary:
 
-```text
-bin/main
+```bash
+go build -o bin/ws ./cmd/ws
 ```
 ````
