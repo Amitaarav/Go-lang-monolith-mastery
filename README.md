@@ -34,3 +34,33 @@ Browser  -----(req)---->  Api ( golang ) --------> database
 Build the logic first and then figure out how to store that data
 `Domain Driven Design` --> Full of rules, complex logic - Behavior first
 
+
+## Identify Entities
+
+1. User
+    - id
+    - name
+    - email
+    - password
+
+2. Listing
+    - id
+    - title
+    - description
+    - price
+    - city
+    - status
+    - user_id
+    - category_id
+
+3. Image ( not sure initially )
+    - id
+    - listing_id
+    - object_key
+    
+4. Category
+    - id
+    - name
+
+
+
