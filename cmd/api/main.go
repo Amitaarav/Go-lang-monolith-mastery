@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"net/http"
+)
 
 func main(){
-	fmt.Println("Olx api server is running...")
+	err := http.ListenAndServe(":8090", nil)
+	if err != nil {
+		log.Fatalf("server failed: %v", err)
+	}
 }

@@ -265,4 +265,9 @@ Build the websocket server binary:
 ```bash
 go build -o bin/ws ./cmd/ws
 ```
-````
+
+## Concepts
+
+`MUX`: ![alt text](./images/image.png): DefaultServeMux used by HandlerFunc with is global that is the bad practice
+
+ ![alt text](./images/image-res.png)
