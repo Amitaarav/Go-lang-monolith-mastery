@@ -23,8 +23,9 @@ func main(){
 		WriteTimeout: time.Second *30,
 		IdleTimeout: time.Second * 60,
 	}
-	err := srv.ListenAndServe() // ReadTimeout, WriteTimeout, IdleTimeout as default are zero , to make it have industry relevant timeouts use srv
-	if err != nil {
+	if err := srv.ListenAndServe(); // ReadTimeout, WriteTimeout, IdleTimeout as default are zero , to make it have industry relevant timeouts use srv
+	
+	err != nil {
 		log.Fatalf("server failed: %v", err)
 	}
 }
