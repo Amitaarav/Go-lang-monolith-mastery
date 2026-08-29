@@ -1,13 +1,47 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	_ "net/http/pprof" // it adds router to global
+	"time"
+
+	"github.com/Amitaarav/olx-api/internal/config"
+	"github.com/joho/godotenv"
 )
 
 func main(){
-	err := http.ListenAndServe(":8090", nil)
+	cfg := config.MustLoad()
+
+	err := godotenv.Load()
 	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	fmt.Printf("starting olx server...")
+	mux := http.NewServeMux() // own router, not global
+	// why pointer ?
+	mux.HandleFunc("GET /healthz", func(writer http.ResponseWriter, response *http.Request) {
+		// order matters
+		writer.Header().Set("Content-Type", "application/json") // 1. first in memory set, content type set json
+		writer.WriteHeader(http.StatusOK) // 2. 
+		writer.Write([]byte(`{"status" : "all ok", "message": "Doing great"}`)) // 3.
+	})
+
+	// HandleFunc calls DefaultServeMux(default router) and registering, which is globally allocated in the application
+
+	srv := http.Server{
+		Addr: ":" + cfg.Port,
+		Handler: mux,
+		ReadTimeout: time.Second * 10,
+		WriteTimeout: time.Second *30,
+		IdleTimeout: time.Second * 60,
+	}
+	
+	if err := srv.ListenAndServe(); // ReadTimeout, WriteTimeout, IdleTimeout as default are zero , to make it have industry relevant timeouts use srv
+
+	err != nil {
 		log.Fatalf("server failed: %v", err)
 	}
 }

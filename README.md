@@ -271,3 +271,6 @@ go build -o bin/ws ./cmd/ws
 `MUX`: ![alt text](./images/image.png): DefaultServeMux used by HandlerFunc with is global that is the bad practice
 
  ![alt text](./images/image-res.png)
+
+  * add: `go get github/joho/godotenv`
+    `go.sum`: lockfile
