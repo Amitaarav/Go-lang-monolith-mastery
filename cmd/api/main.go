@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/Amitaarav/olx-api/internal/config"
+	"github.com/Amitaarav/olx-api/internal/handlers"
 	"github.com/joho/godotenv"
 )
 
@@ -22,12 +23,7 @@ func main(){
 	fmt.Printf("starting olx server...")
 	mux := http.NewServeMux() // own router, not global
 	// why pointer ?
-	mux.HandleFunc("GET /healthz", func(writer http.ResponseWriter, response *http.Request) {
-		// order matters
-		writer.Header().Set("Content-Type", "application/json") // 1. first in memory set, content type set json
-		writer.WriteHeader(http.StatusOK) // 2. 
-		writer.Write([]byte(`{"status" : "all ok", "message": "Doing great"}`)) // 3.
-	})
+	mux.HandleFunc("GET /healthz", handlers.Health)
 
 	// HandleFunc calls DefaultServeMux(default router) and registering, which is globally allocated in the application
 

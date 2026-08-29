@@ -274,3 +274,11 @@ go build -o bin/ws ./cmd/ws
 
   * add: `go get github/joho/godotenv`
     `go.sum`: lockfile
+
+
+## Deployment
+
+`CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o bin/api ./cmd/api`
+
+CGO: C landuage + go, ENABLED=0, do not use
+SQLITE: uses c behind the scene at that time we need to enable
