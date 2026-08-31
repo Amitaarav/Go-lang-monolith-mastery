@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/Amitaarav/olx-api/internal/config"
+	"github.com/Amitaarav/olx-api/internal/db"
 	"github.com/Amitaarav/olx-api/internal/handlers"
 	"github.com/joho/godotenv"
 )
@@ -15,7 +16,13 @@ import (
 func main(){
 	cfg := config.MustLoad()
 
+	_, dbErr := db.Connect(cfg.DatabaseUrl)
+	if dbErr != nil{
+		log.Fatalf("main.db.connect: %v", dbErr)
+	}
+
 	err := godotenv.Load()
+	
 	if err != nil {
 		log.Fatalf("Error loading .env file")
 	}

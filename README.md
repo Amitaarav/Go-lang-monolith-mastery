@@ -282,3 +282,12 @@ go build -o bin/ws ./cmd/ws
 
 CGO: C landuage + go, ENABLED=0, do not use
 SQLITE: uses c behind the scene at that time we need to enable
+
+## Postgres
+
+  - Drivers: 
+    1. lib/pq
+    2. jaxc/pgx ( driver as well it provides tool kit)
+  - Interface
+  
+  ![alt text](image.png)
