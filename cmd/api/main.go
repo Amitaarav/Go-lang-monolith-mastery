@@ -27,6 +27,10 @@ func main(){
 		log.Fatalf("Error loading .env file")
 	}
 
+	// runMigration()
+
+	fmt.Println("database connected")
+
 	fmt.Printf("starting olx server...")
 	mux := http.NewServeMux() // own router, not global
 	// why pointer ?
