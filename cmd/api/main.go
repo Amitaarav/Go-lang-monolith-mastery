@@ -16,7 +16,7 @@ import (
 func main(){
 	cfg := config.MustLoad()
 
-	_, dbErr := db.Connect(cfg.DatabaseUrl)
+	db, dbErr := db.Connect(cfg.DatabaseUrl)
 	if dbErr != nil{
 		log.Fatalf("main.db.connect: %v", dbErr)
 	}
@@ -35,7 +35,7 @@ func main(){
 	mux := http.NewServeMux() // own router, not global
 	// why pointer ?
 	mux.HandleFunc("GET /healthz", handlers.Health)
-
+	mux.HandleFunc("GET /listings", handlers.List(db))
 	// HandleFunc calls DefaultServeMux(default router) and registering, which is globally allocated in the application
 
 	srv := http.Server{
